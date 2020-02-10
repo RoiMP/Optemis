@@ -16,8 +16,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void camera(View view){
+    public void cameraSuitcase(View view){
         Intent intent = new Intent(this, CameraActivity.class);
+        intent.putExtra("mode", "SUITCASE");
+        startActivity(intent);
+    }
+
+    public void cameraQR(View view){
+        Intent intent = new Intent(this, CameraActivity.class);
+        intent.putExtra("mode", "QRCODE");
         startActivity(intent);
     }
 
