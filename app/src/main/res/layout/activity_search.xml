@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchActivity">
+
+    <TextView
+        android:id="@+id/recentSearchesHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Búsquedas recientes"
+        />
+
+
+    <ListView
+        android:id="@+id/recentSearches"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recentSearchesHeader"
+        android:padding="10dp"
+        android:scrollbars="vertical"
+        />
+
+    <LinearLayout
+        android:id="@+id/microphone_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/recentSearches"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/microphone_icon"
+            android:layout_width="200sp"
+            android:layout_height="200sp"
+            app:srcCompat="@drawable/microphone"
+
+            />
+        <TextView
+            android:id="@+id/status_microphone"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Microfono Activado"
+
+            />
+
+    </LinearLayout>
+
+
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/microphone_layout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:gravity="center_horizontal|top"
+        android:text="Buscar"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

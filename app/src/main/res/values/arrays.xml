@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Text Sizes -->
+    <string-array name="text_size_entries">
+        <item>Pequeño</item>
+        <item>Mediano</item>
+        <item>Grande</item>
+        <item>Enorme</item>
+    </string-array>
+
+    <string-array name="text_size_values">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+        <item>XLarge</item>
+    </string-array>
+
+    <!-- Paletas de colores -->
+    <string-array name="paletas_entries">
+        <item>Blanco y Negro</item>
+        <item>Varación 1</item>
+        <item>Varación 2</item>
+        <item>Personalizado</item>
+    </string-array>
+
+    <string-array name="paletas_values">
+        <item>BW</item>
+        <item>V1</item>
+        <item>V2</item>
+        <item>Personalized</item>
+    </string-array>
+
+</resources>

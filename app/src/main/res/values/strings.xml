@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Optemis</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Content Descriptions -->
+        <!-- Main Activity -->
+        <string name="optemis_logo">Logo Optemis</string>
+        <string name="qr_btn">Lector de billetes</string>
+        <string name="search_btn">Búsqueda</string>
+        <string name="map_btn">Mapa</string>
+        <string name="fav_btn">Favoritos</string>
+        <string name="maleta_btn">Localizador de Maleta</string>
+        <string name="ajustes_btn">Ajustes</string>
+
+    <!-- Preference Titles -->
+    <string name="ajustes_header">Ajustes</string>
+    <string name="colores_header">Paleta de colores</string>
+
+    <!-- Ajustes -->
+    <string name="text_size_title">Tamaño de texto</string>
+    <string name="wearable_setting_title">Conectar Wearable</string>
+    <string name="wearable_setting_summary">Utilizar Wearable conectado para reproducir notificaciones</string>
+    <string name="wearable_setting_summary_off">No utilizar Wearable conectado para reproducir notificaciones</string>
+    <string name="keyboard_setting_title">Entrada de teclado</string>
+    <string name="keyboard_setting_summary_on">Entrada de teclado activada</string>
+    <string name="keyboard_setting_summary_off">Entrada de teclado descativada</string>
+    <string name="voice_setting_title">Entrada por voz</string>
+    <string name="voice_setting_summary_on">Entrada por voz activada</string>
+    <string name="voice_setting_summary_off">Entrada por voz descativada</string>
+
+    <!-- Colores -->
+    <string name="select_paleta">Paleta de colores</string>
+
+    <!-- Map -->
+    <string name="title_activity_maps">Map</string>
+
+</resources>
