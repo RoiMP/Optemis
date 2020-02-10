@@ -17,7 +17,9 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="@string/ajustes_header">
+    <PreferenceCategory
+        app:title="@string/ajustes_header"
+        >
 
         <ListPreference
             app:title="@string/text_size_title"
@@ -25,7 +27,8 @@
             android:entryValues="@array/text_size_values"
             android:key="text_size"
             android:defaultValue="text_size"
-            app:useSimpleSummaryProvider="true" />
+            app:useSimpleSummaryProvider="true"
+            />
 
         <SwitchPreference
             app:title="@string/wearable_setting_title"

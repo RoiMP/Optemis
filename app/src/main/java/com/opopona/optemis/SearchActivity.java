@@ -18,9 +18,9 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
 
         getTheme().applyStyle(new Preferences(this).getFontStyle().getResId(), true);
+        setContentView(R.layout.activity_search);
 
         // Find the ListView resource.
         mainListView = (ListView) findViewById( R.id.recentSearches );

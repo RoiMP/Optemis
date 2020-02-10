@@ -2,6 +2,7 @@ package com.opopona.optemis;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.ActionBar;
@@ -14,6 +15,8 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getTheme().applyStyle(new Preferences(this).getFontStyle().getResId(), true);
         setContentView(R.layout.settings_activity);
         getSupportFragmentManager()
                 .beginTransaction()
@@ -29,10 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this /* Activity context */);
         String name = sharedPreferences.getString("text_size", "");
-        //prefs.setFontStyle( (FontStyle) name ); TODO
-
-
-
+        System.err.println(" QUe se impresó " + name);
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
@@ -40,5 +40,9 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
         }
+    }
+
+    public void changes(View view){
+        getTheme().applyStyle(new Preferences(this).getFontStyle().getResId(), true);
     }
 }

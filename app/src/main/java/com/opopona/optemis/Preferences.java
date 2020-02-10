@@ -3,8 +3,10 @@ package com.opopona.optemis;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.preference.PreferenceManager;
+
 public class Preferences {
-    private final static String FONT_STYLE = "FONT_STYLE";
+    private final static String FONT_STYLE = "text_size";
 
     private final Context context;
 
@@ -13,7 +15,7 @@ public class Preferences {
     }
 
     protected SharedPreferences open() {
-        return context.getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     protected SharedPreferences.Editor edit() {
