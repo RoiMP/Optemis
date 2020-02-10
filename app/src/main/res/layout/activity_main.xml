@@ -28,7 +28,7 @@
         app:layout_constraintRight_toLeftOf="@+id/buscar_button"
         app:layout_constraintBottom_toTopOf="@id/localizacion_button"
         android:layout_margin="10dp"
-        android:onClick="camera"
+        android:onClick="cameraQR"
         android:contentDescription="@string/qr_btn"
         />
 
@@ -87,7 +87,7 @@
         app:layout_constraintRight_toLeftOf="@id/ajustes_button"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="10dp"
-        android:onClick="camera"
+        android:onClick="cameraSuitcase"
         android:contentDescription="@string/maleta_btn"
 
         />

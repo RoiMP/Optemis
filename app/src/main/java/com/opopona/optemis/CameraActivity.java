@@ -19,16 +19,25 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.Voice;
+import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
@@ -56,6 +65,36 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
     private int mSensorOrientation;
     private Size mPreviewSize;
 
+    private TextToSpeech tts;
+    private String mode;
+    private int onClickVibrationTime;
+    private String onClickMessage;
+
+    private void speak(final String text){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            tts.speak(text, TextToSpeech.QUEUE_ADD, null, null);
+        }else{
+            tts.speak(text, TextToSpeech.QUEUE_ADD, null);
+        }
+    }
+
+    private void updateMode() {
+        switch(mode) {
+            case "QRCODE":
+                mTextureView.setContentDescription("Lector de billetes");
+                onClickVibrationTime = 2000;
+                onClickMessage = "Escaneo terminado";
+                break;
+            case "SUITCASE":
+                mTextureView.setContentDescription("Localizador de maleta");
+                onClickVibrationTime = 2000;
+                onClickMessage = "Maleta encontrada";
+                break;
+            default:
+                break;
+        }
+    }
+
     private void closeCamera() {
         try {
             mCameraOpenCloseLock.acquire();
@@ -77,7 +116,6 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
     @Override
     protected void onResume() {
         super.onResume();
-
         if (mTextureView.isAvailable()) {
             openCamera(mTextureView.getWidth(), mTextureView.getHeight());
         } else {
@@ -89,11 +127,39 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
         super.onCreate(savedInstanceState);
         mTextureView = new AutoFitTextureView(this);
         mTextureView.setSurfaceTextureListener(this);
+        mode = getIntent().getStringExtra("mode");
+        updateMode();
         setContentView(mTextureView);
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int result = tts.setLanguage(new Locale("es", "ESP"));
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.e("TTS", "This Language is not supported");
+                    }
+
+                } else {
+                    Log.e("TTS", "Initilization Failed!");
+                }
+            }
+        });
+        mTextureView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        Vibrator vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        vibrator.vibrate(onClickVibrationTime);
+                        speak(onClickMessage);
+                    }
+                }.start();
+            }
+        });
     }
 
     static class CompareSizesByArea implements Comparator<Size> {
-
         @Override
         public int compare(Size lhs, Size rhs) {
             return Long.signum((long) lhs.getWidth() * lhs.getHeight() -
