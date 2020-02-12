@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    tools:context=".SearchActivity"
+    android:id="@+id/Menu_Búsqueda">
 
     <TextView
         android:id="@+id/recentSearchesHeader"
@@ -55,7 +56,7 @@
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Microfono Activado"
+            android:text="Micrófono Activado"
             android:textSize="?attr/font_small"
             />
 
@@ -64,7 +65,7 @@
 
 
 
-    <com.google.android.material.textfield.TextInputEditText
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -72,8 +73,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:gravity="center_horizontal|top"
-        android:text="Buscar"
         android:textSize="?attr/font_medium"
+        app:iconifiedByDefault="false"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
